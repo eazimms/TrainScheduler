@@ -5,10 +5,10 @@ $(document).ready(function () {
         authDomain: "trainscheduler-620aa.firebaseapp.com",
         databaseURL: "https://trainscheduler-620aa.firebaseio.com",
         projectId: "trainscheduler-620aa",
-        storageBucket: "",
+        storageBucket: "trainscheduler-620aa.appspot.com",
         messagingSenderId: "1096591438771",
         appId: "1:1096591438771:web:47c68ab977c50ee36851c6"
-    };
+      };
 
     firebase.initializeApp(firebaseConfig);
     var database = firebase.database();
@@ -30,7 +30,7 @@ $(document).ready(function () {
 
         firstTrain = $('#firstTrain').val().trim();
         console.log(firstTrain);
-        freq = $('#frequency').val().trim();
+        freq = $('#freq').val().trim();
         console.log(freq);
         // Push to firebase. 
         database.ref().push({
@@ -56,7 +56,7 @@ $(document).ready(function () {
     var newTrain = $('<tr>').append(
         $('<td>').html(name), 
         $('<td>').html(destination),
-        $('<td>').html(first),
+        $('<td>').html(firstTrain),
         $('<td>').html(frequency),
     ); 
     
