@@ -50,8 +50,8 @@ $(document).ready(function () {
         console.log(childSnapshot.val().first);
         console.log(childSnapshot.val().freq);
 
-        var nTrain; 
         
+        // Moment, only seems to work with minutes.....
         var minuteTill; 
 
         var firstTrain = moment(childSnapshot.val().first, 'hh:mm').subtract(1, 'years'); 
@@ -67,7 +67,7 @@ $(document).ready(function () {
         next = moment(next).format('hh:mm'); 
         console.log(next); 
 
-        $('#newTrain').append('<tr><td>' + childSnapshot.val().name + '</td><td>' + childSnapshot.val().destination +'</td><td>' + childSnapshot.val().freq + '</td><td>' + next + '</td><td>' + minuteTill + '</td>'); 
+        $('#newTrain').append('<tr><td>' + childSnapshot.val().name + '</td><td>' + childSnapshot.val().destination +'</td><td>' + childSnapshot.val().freq + '</td><td>' + next + '</td><td>' + minuteTill + ' Minutes away </td>'); 
 
     }); 
 
@@ -78,5 +78,5 @@ $(document).ready(function () {
     
 
     
-    $('#newTrain > tbody').append(newTrain); 
+    
 }); 
