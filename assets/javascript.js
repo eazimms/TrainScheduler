@@ -67,7 +67,7 @@ $(document).ready(function () {
         next = moment(next).format('hh:mm'); 
         console.log(next); 
 
-        $('#newTrain').append('<tr><td>' + childSnapshot.val().name); 
+        $('#newTrain').append('<tr><td>' + childSnapshot.val().name + '</td><td>' + childSnapshot.val().destination +'</td><td>' + childSnapshot.val().freq + '</td><td>' + next + '</td><td>' + minuteTill + '</td>'); 
 
     }); 
 
