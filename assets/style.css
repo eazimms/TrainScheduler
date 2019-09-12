@@ -1,3 +1,17 @@
 .body {
     color: red; 
 }
+
+.tbody {
+    margin: 10px; 
+
+}
+
+#addnew {
+    margin: 10px; 
+}
+
+#trainTable {
+    margin: 10px; 
+    border: 1px, solid; 
+}
