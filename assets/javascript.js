@@ -37,9 +37,10 @@ $(document).ready(function () {
             name: trainName,
             destination: destination,
             first: firstTrain,
-            frequency: freq,
+            freq: freq,
             dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
+        
     });
     // confirming with snapshots, set to console. 
     database.ref().on("child_added", function (childSnapshot) {
@@ -47,18 +48,35 @@ $(document).ready(function () {
         console.log(childSnapshot.val().name);
         console.log(childSnapshot.val().destination);
         console.log(childSnapshot.val().first);
-        console.log(childSnapshot.val().frequency);
+        console.log(childSnapshot.val().freq);
+
+        var nTrain; 
+        
+        var minuteTill; 
+
+        var firstTrain = moment(childSnapshot.val().first, 'hh:mm').subtract(1, 'years'); 
+
+        var difference = moment().diff(moment(firstTrain), 'minutes'); 
+        var remaining = difference % childSnapshot.val().freq; 
+        console.log(difference); 
+
+        var minuteTill = childSnapshot.val().freq - remaining; 
+
+        var next = moment().add(minuteTill, 'minutes'); 
+
+        next = moment(next).format('hh:mm'); 
+        console.log(next); 
+
+        $('#newTrain').append('<tr><td>' + childSnapshot.val().name); 
 
     }); 
 
+   
+
     
 
-    var newTrain = $('<tr>').append(
-        $('<td>').html(name), 
-        $('<td>').html(destination),
-        $('<td>').html(firstTrain),
-        $('<td>').html(frequency),
-    ); 
+    
+
     
     $('#newTrain > tbody').append(newTrain); 
-})
+}); 
